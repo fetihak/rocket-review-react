@@ -9,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ColorRing } from 'react-loader-spinner'
 
-const reviewForm: React.FC = () => {
+const ReviewFormPage: React.FC<{}> = ({}) => {
 
   const router = useRouter();
 
@@ -104,4 +104,4 @@ const reviewForm: React.FC = () => {
   )
 }
 
-export default reviewForm
+export default ReviewFormPage

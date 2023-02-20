@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/router';
 import { IReview } from '@/types/IRocketReview'
 import { deleteReview } from '@/utils/api';
+import Image from 'next/image'
 import ConfirmationModal from './ConfirmationModal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -56,7 +57,7 @@ const Review: React.FC<{ review: IReview }> = ({ review }) => {
           <div v-for="card in cards" className="flex flex-col md:flex-row overflow-hidden
                                         bg-white rounded-lg shadow-xl  mt-4 w-100 mx-2">
             <div className="h-64 w-auto md:w-1/2">
-              <img src={rocketImage} className="inset-0 h-full w-full object-cover object-center" />
+              <Image src={rocketImage} alt={rocketName} className="inset-0 h-full w-full object-cover object-center" />
             </div>
             <div className="w-full py-4 px-6 text-gray-800 flex flex-col justify-between">
               <div className="">
@@ -80,7 +81,7 @@ const Review: React.FC<{ review: IReview }> = ({ review }) => {
                 {description?.substring(0, 500)}
               </p>
               <div className="flex items-center">
-                <img src={userAvatar} className="w-10 h-10 rounded-full mr-4" alt="User Avatar" />
+                <Image src={userAvatar} className="w-10 h-10 rounded-full mr-4" alt="User Avatar" />
                 <p className="text-sm text-gray-700 uppercase tracking-wide font-semibold mt-2">
                   {username}
                 </p>

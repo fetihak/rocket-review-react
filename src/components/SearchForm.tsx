@@ -73,7 +73,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ setSelectedUser, user}) => {
             }, 1000);
             return () => clearTimeout(timer);
         }
-    }, [query]);
+    }, [query,userFound]);
 
 
 
