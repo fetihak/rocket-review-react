@@ -1,22 +1,21 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router';
 import { IReview } from '@/types/IRocketReview'
-import { deleteReview } from '@/utils/api';
 import ConfirmationModal from './ConfirmationModal';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import useToaster from '@/hooks/useToaster';
+import ToastContainerConfig from './ToastContainerConfig';
+import usePostData from '@/hooks/usePostData';
 
 const Review: React.FC<{ review: IReview }> = ({ review }) => {
 
   const router = useRouter();
+
+  const { deleteData } = usePostData();
 
   const [showModal, setShowModal] = useState(false)
 
   const { id, reviewTitle, rocketImage, rocketName, username, description, userId, userAvatar } = review;
 
   const editHandler = () => {
-
     router.push(`review/${id}`)
   }
 
@@ -34,14 +33,7 @@ const Review: React.FC<{ review: IReview }> = ({ review }) => {
 
   }
   const handleConfirmDelete = () => {
-    deleteReview(id).then(response => {
-      if (response) {
-        useToaster({ message: "Successfully Deleted Review" })
-        router.push('/');
-      }
-    }).catch(error => {
-      toast("Something went wrong, please try again later")
-    });
+    deleteData(id)
   }
   return (
 
@@ -84,16 +76,7 @@ const Review: React.FC<{ review: IReview }> = ({ review }) => {
           </div>
         </div>
       </div>
-      <ToastContainer position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light" />
+      <ToastContainerConfig />
       {showModal && (
         <ConfirmationModal
           message={`Are you sure you want to delete the review ${reviewTitle}?`}
