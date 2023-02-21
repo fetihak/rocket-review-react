@@ -47,7 +47,7 @@ const Review: React.FC<{ review: IReview }> = ({ review }) => {
             </div>
             <div className="w-full py-4 px-6 text-gray-800 flex flex-col justify-between">
               <div className="">
-                <h3 className="font-semibold text-lg leading-tight truncate capitalize"> {rocketName?.substring(0, 20)}</h3>
+                <h3 className="font-semibold text-lg leading-tight truncate capitalize"> {rocketName?.substring(0, 50)}</h3>
                 <div className='flex flex-row-reverse'>
                   <button onClick={editHandler}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 ml-2 edit-icon">
@@ -62,7 +62,7 @@ const Review: React.FC<{ review: IReview }> = ({ review }) => {
                 </div>
 
               </div>
-              <h4 className="text-gray-400 text-md leading-tight truncate capitalize">{reviewTitle?.substring(0, 20)}</h4>
+              <h4 className="text-gray-400 text-md leading-tight truncate capitalize">{reviewTitle?.substring(0, 50)}</h4>
               <p className="mt-2">
                 {description?.substring(0, 500)}
               </p>
