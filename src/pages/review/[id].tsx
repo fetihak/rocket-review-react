@@ -6,6 +6,7 @@ import { User } from '@/types/IUser';
 import { ToastContainer } from 'react-toastify';
 import { ColorRing } from 'react-loader-spinner'
 import usePostData from "@/hooks/usePostData";
+import ToastContainerConfig from '@/components/ToastContainerConfig';
 
 const ReviewFormPage: React.FC<{}> = ({ }) => {
 
@@ -23,7 +24,7 @@ const ReviewFormPage: React.FC<{}> = ({ }) => {
       userId: user.id,
       userAvatar: user.avatar_url
     }
-    
+
     if (review.id == 0) { // ADD
       setLoading(true);
       delete data.id;
@@ -38,16 +39,7 @@ const ReviewFormPage: React.FC<{}> = ({ }) => {
     <>
       <Header showAddButton={false} />
       <div>
-        <ToastContainer position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light" />
+       <ToastContainerConfig/>
         {!loading &&
           <div className='pt-6 pb-12 bg-gray-100'>
             <ReviewForm submitData={handleSubmit} />
