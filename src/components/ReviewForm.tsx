@@ -5,7 +5,7 @@ import Select, { createFilter } from 'react-select';
 import SearchForm from './SearchForm';
 import { useRouter } from 'next/router'
 import { User } from '@/types/IUser';
-import { ColorRing } from 'react-loader-spinner'
+import ColorRingConfig from '@/components/ColorRingConfig';
 import { getRockets, getReviewById } from '@/utils/api';
 
 type ReviewFormProps = {
@@ -23,8 +23,6 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ submitData }) => {
     const [loading, setLoading] = useState<boolean>(false);
 
     const [selectedUser, setSelectedUser] = useState<User>();
-
-    // const []
 
     const [selectedRocket, setSelectedRocket] = useState({
         label: '',
@@ -101,15 +99,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ submitData }) => {
         <>
             {loading &&
                 <div className="flex h-full items-center justify-center">
-                    <ColorRing
-                        visible={true}
-                        height="80"
-                        width="80"
-                        ariaLabel="blocks-loading"
-                        wrapperStyle={{}}
-                        wrapperClass="blocks-wrapper"
-                        colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
-                    />
+                    <ColorRingConfig/>
                 </div>
             }
             {!loading && <form onSubmit={handleSubmit(onSubmit)}>
@@ -125,6 +115,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ submitData }) => {
                                     options={rockets}
                                     onChange={handleChange}
                                     value={selectedRocket}
+                                    required={true}
                                     filterOption={createFilter({ matchFrom: "start" })}
                                     name="defect-code"
                                     className="w-full"
@@ -149,17 +140,22 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ submitData }) => {
                             <div className='mt-4'>
                                 <SearchForm user={selectedUser as User} setSelectedUser={setUserHandler} />
                             </div>
+                            <hr className='mt-10 h-px my-8 bg-gray-200 border-0 dark:bg-gray-700'/>
                             <div className='mt-4 mt-4'>
                                 <button
+                                disabled={!selectedRocket?.label || !selectedRocket}
                                     type='submit'
                                     className="bg-blue-500 hover:bg-blue-700 
-                                     text-white rounded-md py-3 px-6 font-bold hover:scale-110 duration-300 "
+                                    text-white font-bold py-2 px-6 rounded
+                                    mx-2.5 "
                                 >
                                     Save
                                 </button>
                                 <button
                                     type='button'
-                                    className="bg-red-500 hover:bg-red-700 text-white rounded-md py-3 px-6 font-bold hover:scale-110 duration-300 "
+                                    className="bg-red-500 
+                                    bg-red-500 hover:bg-red-700 
+                                    text-white font-bold py-2 px-6 rounded "
                                     onClick={() => router.push('/')}>
                                     Cancel
                                 </button>

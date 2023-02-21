@@ -79,10 +79,11 @@ const SearchForm: React.FC<SearchFormProps> = ({ setSelectedUser, user}) => {
 
     return (
         <div className="relative">
+            <label  className="block text-grey-darker text-sm font-bold mb-2"> Github User Search </label>
+                             
             <input
                 type="text"
                 className="block w-full py-2 pl-3 pr-10 text-base leading-6 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                placeholder="Search users..."
                 value={query}
                 onChange={handleSearch}
             />
