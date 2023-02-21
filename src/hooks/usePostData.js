@@ -10,7 +10,7 @@ export const usePostData = () => {
         router.push('/', undefined, { shallow: true });
       }
     }).catch(error => {
-      toast("Something Went Wrong, Please Try Again Later")
+      useToaster({ message:"Something Went Wrong, Please Try Again Later"})
     });
   }
   const updateData = (data) => {
@@ -20,7 +20,7 @@ export const usePostData = () => {
         router.push('/', undefined, { shallow: true });
       }
     }).catch(error => {
-      toast("Something Went Wrong, Please Try Again Later")
+      useToaster({ message: "Something Went Wrong, Please Try Again Later" })
     });
   }
   return { postData , updateData};
