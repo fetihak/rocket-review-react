@@ -6,8 +6,10 @@ import Header from '@/components/Header';
 import { User } from '@/types/IUser';
 import { useRouter } from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
 import { ColorRing } from 'react-loader-spinner'
+import useToaster from '@/hooks/useToaster';
 
 const ReviewFormPage: React.FC<{}> = ({}) => {
 
@@ -29,16 +31,7 @@ const ReviewFormPage: React.FC<{}> = ({}) => {
       delete data.id;
       createReview(data).then(response => {
         if (response) {
-          toast("Review Added", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          })
+          useToaster({message:"Successfully Created Review"})
           router.push('/', undefined, { shallow: true });
         }
       }).catch(error => {
@@ -48,23 +41,13 @@ const ReviewFormPage: React.FC<{}> = ({}) => {
     else {
       updateReview(data).then(response => {
         if (response) {
-          toast("Review Updated", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          })
+          useToaster({message:"Successfully Updated Review"})
           router.push('/', undefined, { shallow: true });
         }
       }).catch(error => {
         toast("Something Went Wrong, Please Try Again Later")
       });
     }
-    // router.push('/reviews');
   };
 
   return (

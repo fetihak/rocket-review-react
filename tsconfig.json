@@ -19,6 +19,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/utils/axios.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/utils/axios.js", "src/hooks/useToaster.js"],
   "exclude": ["node_modules"]
 }

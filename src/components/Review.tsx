@@ -5,6 +5,7 @@ import { deleteReview } from '@/utils/api';
 import ConfirmationModal from './ConfirmationModal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useToaster from '@/hooks/useToaster';
 
 const Review: React.FC<{ review: IReview }> = ({ review }) => {
 
@@ -35,16 +36,7 @@ const Review: React.FC<{ review: IReview }> = ({ review }) => {
   const handleConfirmDelete = () => {
     deleteReview(id).then(response => {
       if (response) {
-        toast("Review Deleted", {
-          position: "top-right",
-          autoClose: 500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        })
+        useToaster({ message: "Successfully Deleted Review" })
         router.push('/');
       }
     }).catch(error => {
@@ -78,7 +70,7 @@ const Review: React.FC<{ review: IReview }> = ({ review }) => {
                 </div>
 
               </div>
-              <h4 className="text-gray-400 text-md leading-tight truncate capitalize">{reviewTitle.substring(0, 20)}</h4>
+              <h4 className="text-gray-400 text-md leading-tight truncate capitalize">{reviewTitle?.substring(0, 20)}</h4>
               <p className="mt-2">
                 {description?.substring(0, 500)}
               </p>
