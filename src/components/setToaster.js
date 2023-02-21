@@ -1,11 +1,11 @@
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 
-function useToaster({ message }) {
+function setToaster({ message }) {
 
     const toaster = toast(message, {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 500,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -18,4 +18,4 @@ function useToaster({ message }) {
     };
 }
 
-export default useToaster
+export default setToaster

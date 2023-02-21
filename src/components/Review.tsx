@@ -37,7 +37,7 @@ const Review: React.FC<{ review: IReview }> = ({ review }) => {
   }
   return (
 
-    <div className="pt-6 pb-4 bg-gray-100">
+    <div className="pt-6 pb-12 bg-gray-100">
       <div id="card" className="">
         <div className="container w-100 lg:w-4/5 mx-auto flex flex-col">
           <div v-for="card in cards" className="flex flex-col md:flex-row overflow-hidden
