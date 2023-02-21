@@ -143,7 +143,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ submitData }) => {
                             <hr className='mt-10 h-px my-8 bg-gray-200 border-0 dark:bg-gray-700'/>
                             <div className='mt-4 mt-4'>
                                 <button
-                                disabled={!selectedRocket?.label || !selectedRocket}
+                                disabled={!selectedRocket?.label || !selectedRocket || !selectedUser}
                                     type='submit'
                                     className="bg-blue-500 hover:bg-blue-700 
                                     text-white font-bold py-2 px-6 rounded

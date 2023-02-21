@@ -19,9 +19,9 @@ const ReviewFormPage: React.FC<{}> = ({ }) => {
       ...review,
       rocketName: rocket.label,
       rocketImage: rocket.image,
-      username: user.login,
-      userId: user.id,
-      userAvatar: user.avatar_url
+      username: user?.login,
+      userId: user?.id,
+      userAvatar: user?.avatar_url
     }
 
     if (review.id == 0) { // ADD
