@@ -1,23 +1,20 @@
 import React, { useState } from 'react'
 import ReviewForm from '@/components/ReviewForm'
-import { createReview, updateReview } from '@/utils/api';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { User } from '@/types/IUser';
-import { useRouter } from 'next/router';
-import { ToastContainer, toast } from 'react-toastify';
-
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 import { ColorRing } from 'react-loader-spinner'
-import useToaster from '@/hooks/useToaster';
+import usePostData from "@/hooks/usePostData";
 
-const ReviewFormPage: React.FC<{}> = ({}) => {
-
-  const router = useRouter();
+const ReviewFormPage: React.FC<{}> = ({ }) => {
 
   const [loading, setLoading] = useState(false);
 
+  const { postData, updateData } = usePostData();
+
   const handleSubmit = (rocket: any, user: User, review: any) => {
+
     const data = {
       ...review,
       rocketName: rocket.label,
@@ -26,27 +23,14 @@ const ReviewFormPage: React.FC<{}> = ({}) => {
       userId: user.id,
       userAvatar: user.avatar_url
     }
+    
     if (review.id == 0) { // ADD
       setLoading(true);
       delete data.id;
-      createReview(data).then(response => {
-        if (response) {
-          useToaster({message:"Successfully Created Review"})
-          router.push('/', undefined, { shallow: true });
-        }
-      }).catch(error => {
-        toast("Something Went Wrong, Please Try Again Later")
-      });
+      postData(data);
     }
     else {
-      updateReview(data).then(response => {
-        if (response) {
-          useToaster({message:"Successfully Updated Review"})
-          router.push('/', undefined, { shallow: true });
-        }
-      }).catch(error => {
-        toast("Something Went Wrong, Please Try Again Later")
-      });
+      updateData(data)
     }
   };
 
