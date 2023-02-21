@@ -27,13 +27,12 @@ const Home: React.FC<{ reviews: IReview[] }> = ({ reviews }) => {
     </>
   )
 }
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const reviews = await getReviews();
   return {
     props: {
       reviews,
     },
-    revalidate: 1,
   };
 }
 
