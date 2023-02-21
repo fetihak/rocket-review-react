@@ -7,14 +7,21 @@ import { getReviews } from '@/utils/api';
 
 const Home: React.FC<{ reviews: IReview[] }> = ({ reviews }) => {
 
-  if (!reviews) {
-    return <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>;
-  }
+
   return (
     <>
       <Header showAddButton={true} />
       <main className="flex-grow">
-          <ReviewList reviews={reviews} />
+        <ReviewList reviews={reviews} />
+        {reviews.length == 0 &&
+          <div className="pt-6 pb-12 h-96 bg-gray-100">
+            <div id="card" className="">
+              <div className="container w-100 lg:w-4/5 mx-auto flex flex-col">
+               <h1 className='font-extrabold text-4xl text-center mt-10'>No Review To Display</h1> 
+              </div>
+            </div>
+          </div>
+        }
       </main>
       <Footer />
     </>
