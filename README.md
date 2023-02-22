@@ -1,3 +1,12 @@
+// Backend Api is done using Express node js and Firestore and hosted 
+   @https://us-central1-sora-union-rockets.cloudfunctions.net
+
+// Project is done using net js and hosted on Vercel
+   soraunion-rocket-review.vercel.app
+
+// Run npm install before npm run dev,
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
