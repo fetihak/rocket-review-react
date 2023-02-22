@@ -44,11 +44,13 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ submitData }) => {
         setSelectedUser(data)
     }
     const handleChange = (event: any) => {
+
         setSelectedRocket({
             value: event.value,
             image: event.image,
             label: event.label,
         });
+        setRocketError(false)
     }
 
     useEffect(() => {
