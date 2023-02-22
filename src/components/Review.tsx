@@ -41,7 +41,7 @@ const Review: React.FC<{ review: IReview }> = ({ review }) => {
       <div id="card" className="">
         <div className="container w-100 lg:w-4/5 mx-auto flex flex-col">
           <div v-for="card in cards" className="flex flex-col md:flex-row overflow-hidden
-                                        bg-white rounded-lg shadow-xl  mt-4 w-100 mx-2">
+                                        bg-white rounded-lg hover:shadow-xl  mt-4 w-100 mx-2">
             <div className="h-64 w-auto md:w-1/2">
               <img src={rocketImage} className="inset-0 h-full w-full object-cover object-center" />
             </div>
