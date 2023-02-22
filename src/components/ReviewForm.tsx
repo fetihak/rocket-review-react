@@ -150,9 +150,9 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ submitData }) => {
                                 <input id="reviewTitle"
                                     className="appearance-none border 
                                      rounded w-full py-2 px-3 text-grey-darker"
-                                    {...register("reviewTitle", { required: true, maxLength: 30 })} />
+                                    {...register("reviewTitle", { required: true, maxLength: 50 })} />
                                 {errors.reviewTitle && errors.reviewTitle.type === "required" && <span className='red'>This is required</span>}
-                                {errors.reviewTitle && errors.reviewTitle.type === "maxLength" && <span className='red'>Max length exceeded</span>}
+                                {errors.reviewTitle && errors.reviewTitle.type === "maxLength" && <span className='red'>Max length exceeded (Max Charachter :50)</span>}
                             </div>
                             <div className='mt-4'>
                                 <label htmlFor='description' className="block text-grey-darker text-sm font-bold mb-2"> Review 
@@ -163,7 +163,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ submitData }) => {
                                  rounded w-full py-2 px-3 
                                  text-grey-darker" {...register("description", { required: true, maxLength: 500 })} />
                                 {errors.description && errors.description.type === "required" && <span className='red'>This is required</span>}
-                                {errors.description && errors.description.type === "maxLength" && <span className='red'>Max length exceeded</span>}
+                                {errors.description && errors.description.type === "maxLength" && <span className='red'>Max length exceeded (Max Charachter :500)</span>}
                             </div>
                             <div className='mt-4'>
                                 <SearchForm user={selectedUser as User}
