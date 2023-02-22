@@ -15,7 +15,6 @@ const ConfirmationModal: React.FC<{
             onClose();
         }
         const handleConfirm = () => {
-            console.log("here")
             onConfirm();
             //setIsOpen(false)
         }

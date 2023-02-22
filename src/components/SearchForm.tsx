@@ -23,17 +23,22 @@ const SearchForm: React.FC<SearchFormProps> = ({ setSelectedUser, user}) => {
 
     const [result, setResult] = useState([]);
 
-
+    // const [ userError, setUserError]= useState(false);
 
     const handleResultClick = (result: User) => {
         setUserFound(false)
         setUserFound(true);
         setTotalCount(0)
-        setSelectedUser(result) // pass data fro review form
+        setSelectedUser(result) // pass data from review form
         setQuery(result.login)
     }
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
+        if(value.length===0){
+            setResult([])
+            setLoading(false)
+            setSelectedUser([] as any)
+        }
         setQuery(value)
         setUserFound(false);
     };
@@ -79,7 +84,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ setSelectedUser, user}) => {
 
     return (
         <div className="relative">
-            <label  className="block text-grey-darker text-sm font-bold mb-2"> Github User Search </label>
+            <label  className="block text-grey-darker text-sm font-bold mb-2"> Github User Search <span className='red'>  *</span></label>
                              
             <input
                 type="text"
